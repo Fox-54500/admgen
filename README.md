@@ -1,3 +1,5 @@
+Github url： https://github.com/Fox-54500/admgen
+
 #1、How to use
 #####please use it in your admin project：
     
