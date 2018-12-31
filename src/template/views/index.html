@@ -1,0 +1,158 @@
+<!--  Created By Adm Generator-->
+<style>
+    td {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .search-condition {
+        height: 69px;
+    }
+</style>
+<div style="overflow: hidden;min-height: 80vh" class="container-fluid" ng-controller="$YourModules$Controller">
+    <div class="loading" ng-if="loading"><img src="/public/images/lun.gif" alt=""></div>
+    <div class="row" style="margin-top: 20px;">
+        <% if(rights.$YourKey$_search){ %>
+        <div class="common-style">
+            <button type="button" class="btn defaultBtn" ng-click="search()">查询 <i
+                    class="glyphicon glyphicon-search"></i></button>
+        </div>
+        <% } %>
+        <% if(rights.$YourKey$_new){ %>
+        <div class="common-style">
+            <button type="button" class="btn defaultBtn" ng-click="create(false)">新增 <i
+                    class="glyphicon glyphicon-plus"></i></button>
+        </div>
+        <% } %>
+        <% if(rights.$YourKey$_search){ %>
+        <div class="common-style">
+            <button type="button" class="btn defaultBtn" ng-click="resetParams()">清空 <i
+                    class="glyphicon glyphicon-trash"></i></button>
+        </div>
+        <% } %>
+        <% if(rights.$YourKey$_edit){ %>
+        <div class="common-style">
+            <button type="button" class="btn defaultBtn" ng-click="edit()">编辑 <i
+                    class="glyphicon glyphicon-edit"></i></button>
+        </div>
+        <% } %>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-sm-2 search-condition">
+            <label>普通input：</label>
+            <input type="text" class="form-control" ng-model="params.sn">
+        </div>
+        <div class="col-sm-2 search-condition">
+            <label>时间input：</label>
+            <p class="input-group">
+                <input type="text" class="form-control" datetime-picker="yyyy-MM-dd HH:mm" enable-date="true"
+                       timepicker-options="{showMeridian:false}" close-on-selection="true"
+                       ng-model="params.time"
+                       is-open="date1Open" default-time="04:00:00"
+                       enable-time="true" placeholder="起始时间">
+                <span class="input-group-btn">
+                     <button type="button" class="btn btn-default" ng-click="date1Open=true">
+                         <i class="glyphicon glyphicon-calendar"></i>
+                     </button>
+                 </span>
+            </p>
+        </div>
+        <div class="col-sm-2 search-condition">
+            <label>运营中心：</label>
+            <p class="input-group">
+                <input type="text" class="form-control" ng-model="params.FK_store_parent_name" disabled>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="showInstitution()">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+        <div class="col-sm-2 search-condition">
+            <label>选择人员：</label>
+            <p class="input-group">
+                <input type="text" class="form-control" ng-model="params.FK_create_staff_name" disabled>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="showStaffList()">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+        <div class="col-sm-2 search-condition">
+            <label>单据状态：</label>
+            <select class="form-control" ng-model="params.status">
+                <option value="">--请选择--</option>
+                <option ng-repeat="(id, value) in statusMap" value="{{id}}">{{value}}</option>
+            </select>
+        </div>
+    </div>
+    <table class="tableClass table-bordered" style="margin-top: 20px">
+        <tr>
+            <td width="20"><input type="checkbox" class="form-control" ng-model="isAll" ng-click="toggleAll()"></td>
+            <td>id</td>
+            <td>name</td>
+            <td>value</td>
+            <td>type</td>
+            <td>result</td>
+        </tr>
+        <tbody style="max-height: 40vh">
+        <tr ng-repeat="item in listItems" ng-dblclick="create(true, item)">
+            <td width="20">
+                <input type="checkbox" class="form-control" ng-model="idGroup[item.id]">
+            </td>
+
+            <td>{{item.id}}</td>
+
+            <td>{{item.name}}</td>
+
+            <td>{{item.value}}</td>
+
+            <td>{{item.type}}</td>
+
+            <td>{{item.result}}</td>
+
+        </tr>
+        </tbody>
+        <tr>
+            <td width="20">--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+        </tr>
+    </table>
+    <div class="pospage">
+        <div class="col-md-6">
+            <uib-pagination boundary-links="true" total-items="dataCount" max-size="10"
+                            ng-change="search()" num-pages="nums_per_page" items-per-page="itemsPerPage"
+                            ng-model="currentPage"
+                            class="pagination-sm" previous-text="上页" next-text="下页" first-text="首页"
+                            last-text="末页">
+            </uib-pagination>
+        </div>
+        <div class="col-md-1">
+            <div style="margin-top:20px;">
+                <select class="form-control" ng-model="itemsPerPage" ng-change="search()">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000">1000</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="input-group" style="margin-top:20px;">
+                <input type="text" class="form-control" placeholder="page" ng-model="currentPage" ng-change="search()">
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="search()">Go!</button>
+            </span>
+            </div>
+        </div>
+        <div class="col-md-2" style="padding-top:25px;text-align:center">找到了[ <b>{{ dataCount }}</b> ]条记录</div>
+        <div class="col-md-1" style="padding-top:25px;text-align:center">{{currentPage}}/{{nums_per_page}}</div>
+    </div>
+</div>

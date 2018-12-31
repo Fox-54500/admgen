@@ -1,0 +1,18 @@
+{
+  "name": "admgen",
+  "version": "1.0.4",
+  "description": "generate view & controller",
+  "main": "index.js",
+  "bin": {
+    "zhgen": "bin/zhgen.js"
+  },
+  "scripts": {
+    "test": "node ./bin/zhgen"
+  },
+  "author": "yangzihao",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0"
+  }
+}

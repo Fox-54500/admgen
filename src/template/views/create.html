@@ -1,0 +1,94 @@
+ <!--  Created By: Adm Generator -->
+<style>
+    .tag-condition {
+        margin-top: 10px;
+        height: 69px;
+    }
+    
+    .tag-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .tag-context {
+        display: flex;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        flex-wrap: wrap;
+        width: 100%;
+        min-height: 100px;
+        margin-top: 5px;
+        padding: 10px;
+    }
+    
+    .bottom-operation > button {
+        margin-right: 10px;
+    }
+</style>
+<h4 class="dialog-title">{{isEdit?'编辑':'新增'}}</h4>
+<div class="loading" ng-if="loading"><img src="/public/images/lun.gif" alt=""></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 tag-condition">
+            <label>普通input：</label>
+            <input type="text" class="form-control" ng-model="addParams.name">
+        </div>
+        <div class="col-sm-4 tag-condition">
+            <label>时间：</label>
+            <p class="input-group">
+                <input type="text" class="form-control" datetime-picker="yyyy-MM-dd HH:mm" enable-date="true"
+                       timepicker-options="{showMeridian:false}" close-on-selection="true"
+                       ng-model="addParams.time"
+                       is-open="date1Open" default-time="04:00:00"
+                       enable-time="true" placeholder="起始时间">
+                <span class="input-group-btn">
+                     <button type="button" class="btn btn-default" ng-click="date1Open=true">
+                         <i class="glyphicon glyphicon-calendar"></i>
+                     </button>
+                 </span>
+            </p>
+        </div>
+        <div class="col-sm-4 tag-condition">
+            <label>运营中心：</label>
+            <p class="input-group" ng-click="showInstitution()">
+                <input type="text" class="form-control" ng-model="addParams.FK_store_parent_name"
+                       placeholder="选择运营中心" disabled>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+        <div class="col-md-12" style="margin-top: 10px">
+            <div class="form-group" style="">
+                <div class="tag-header">
+                    <label>活动相关门店：</label>
+                    <div class="common-style">
+                        <button type="button" class="btn btn-default" ng-click="selectStore()" ng-disabled="isEdit">
+                            查询
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul class="tag-context">
+                    <li style="display: flex;height: 25px;line-height: 25px;margin: 5px 10px;background: #0ca5ef;color: white"
+                        ng-repeat="item in storeList track by $index">
+                        <div style="width:120px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;text-align: center;padding-left: 5px">
+                            {{item.name}}
+                        </div>
+                        <button style="width: 25px;border: none;outline: none;background: none"
+                                ng-click="deleteStore($index)" ng-disabled="editStatus">×
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row bottom-operation" style="display: flex;padding: 15px 15px 25px">
+        <button class="btn btn-default" ng-click="cancel()">取消</button>
+        
+        <button class="btn btn-success" ng-click="save()">保存</button>
+    </div>
+</div>
