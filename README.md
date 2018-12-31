@@ -1,0 +1,2 @@
+# admgen
+admin generator
