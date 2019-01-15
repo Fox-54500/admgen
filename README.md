@@ -21,7 +21,7 @@ Github url： https://github.com/Fox-54500/admgen
     
 | name | function |
 |-------|------|
-|modules|generate module(wo da cuo zi le , CET4 mei guo)
+|module|generate module
 | route|generate route File seperately
 | basectrl|generate base ctrl File seperately
 | createctrl|generate create ctrl File seperately
@@ -52,7 +52,7 @@ Github url： https://github.com/Fox-54500/admgen
     
 | 名称 | 功能 |
 |-------|------|
-|modules|生成 模块(写的时候打多了个s, 四级没过见谅)
+|module|生成 模块
 | route|单独生成 路由文件文件
 | basectrl|单独生成 基础控制器文件
 | createctrl|单独生成 新增弹窗控制器文件

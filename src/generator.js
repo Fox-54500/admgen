@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const Type = {
     'nameMatch': /\$YourModules\$/g,
     'keyMatch': /\$YourKey\$/g,
-    'modules': function (name, key) {
+    'module': function (name, key) {
         this.route(name, key);
         this.basectrl(name, key);
         this.createctrl(name, key);
@@ -15,7 +15,7 @@ const Type = {
     'route': function (name, key) {
         fs.exists('./routes', (exist) => {
             if (exist) {
-                let route = __dirname + `\\template\\routes\\route.js`;
+                let route = __dirname + `/template/routes/route.js`;
                 fs.readFile(route, {flag: 'r+', encoding: 'utf8'}, (err, data) => {
                     let content = data;
                     let filePatch = './routes/' + name + '.js';
@@ -37,7 +37,7 @@ const Type = {
     'basectrl': function (name, key) {
         let directory = './webapp/c';
         if (fs.existsSync(directory)) {
-            let baseController = __dirname + `\\template\\controller\\baseController.js`;
+            let baseController = __dirname + `/template/controller/baseController.js`;
             let content = fs.readFileSync(baseController, {flag: 'r+', encoding: 'utf8'});
             let filePatch = './webapp/c/' + name + '/' + name + 'Controller.js';
             content = content.replace(this.keyMatch, key);
@@ -54,7 +54,7 @@ const Type = {
     'createctrl': function (name, key) {
         let directory = './webapp/c';
         if (fs.existsSync(directory)) {
-            let createController = __dirname + `\\template\\controller\\CreateController.js`;
+            let createController = __dirname + `/template/controller/CreateController.js`;
             let content = fs.readFileSync(createController, {flag: 'r+', encoding: 'utf8'});
             let filePatch = './webapp/c/' + name + '/Create' + name + 'Controller.js';
             content = content.replace(this.keyMatch, key);
@@ -71,7 +71,7 @@ const Type = {
     'view': function (name, key) {
         let directory = './views';
         if (fs.existsSync(directory)) {
-            let view = __dirname + `\\template\\views\\index.html`;
+            let view = __dirname + `/template/views/index.html`;
             let content = fs.readFileSync(view, {flag: 'r+', encoding: 'utf8'});
             let filePatch = './views/' + name + '/index.html';
             content = content.replace(this.keyMatch, key);
@@ -88,7 +88,7 @@ const Type = {
     'createview': function (name, key) {
         let directory = './webapp/v';
         if (fs.existsSync(directory)) {
-            let createView = __dirname + `\\template\\views\\create.html`;
+            let createView = __dirname + `/template/views/create.html`;
             let content = fs.readFileSync(createView, {flag: 'r+', encoding: 'utf8'});
             let filePatch = './webapp/v/' + name + '/Create' + name + '.html';
             if (!fs.existsSync(directory + '/' + name)) {
