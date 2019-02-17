@@ -1,14 +1,5 @@
 // ---------------- Created By: Adm Generator
-var service = [
-    '$scope',
-    '$filter',
-    'instance',
-    '_',
-    '$http',
-    'toastr',
-    'Dialog',
-];
-angular.module('adminPanel').controller('$YourModules$Controller', [...service,
+angular.module('adminPanel').controller('$YourModules$Controller', ['$scope', '$filter', 'instance', '_', '$http', 'toastr', 'Dialog',
     function ($scope, $filter, instance, _, $http, toastr, Dialog) {
         /* ---------------------------------- 方法 ---------------------------------- */
         // 查询
@@ -26,7 +17,7 @@ angular.module('adminPanel').controller('$YourModules$Controller', [...service,
             //         if (res.result) {
             //             $scope.listItems = res.data;
             //             $scope.listItems.map(function (item) {
-            //                 $scope.idList = item.id;
+            //                 $scope.idList.push(item.id);
             //             });
             //             $scope.dataCount = res.count;
             //         } else {
@@ -52,12 +43,12 @@ angular.module('adminPanel').controller('$YourModules$Controller', [...service,
         };
 
         // 新增
-        $scope.create = function (isEdit, campaign) {
+        $scope.create = function (isEdit, item) {
             let query = {
                 isEdit,
             };
-            if (campaign) {
-                query.campaign = angular.copy(campaign);
+            if (item) {
+                query.item = angular.copy(item);
             }
             let controller = '/$YourModules$/Create$YourModules$Controller.js';
             let view = '/$YourModules$/Create$YourModules$.html';

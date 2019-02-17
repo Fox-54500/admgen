@@ -1,13 +1,5 @@
 // ---------------- Created By: Adm Generator
-var service = [
-    '$scope',
-    '$rootScope',
-    '$http',
-    'params',
-    'toastr',
-    'Dialog',
-]
-angular.module('adminPanel').controller('Create$YourModules$Controller', [...service,
+angular.module('adminPanel').controller('Create$YourModules$Controller', ['$scope', '$rootScope', '$http', 'params', 'toastr', 'Dialog',
     function ($scope, $rootScope, $http, params, toastr, Dialog) {
         // ---------------------------------- 方法 ----------------------------------
         // 提交
@@ -15,7 +7,7 @@ angular.module('adminPanel').controller('Create$YourModules$Controller', [...ser
             $scope.loading = true;
             // 拷贝一份需要上传的参数，避免因为需要调整参数导致不可二次上传
             let data = angular.copy($scope.addParams);
-            // 处理需要上传的日期
+            // // 处理需要上传的日期
             // if (data.enlist_start_time) {
             //     data.enlist_start_time = moment(data.enlist_start_time).format('YYYY-MM-DD HH:mm:ss')
             // }
@@ -42,6 +34,7 @@ angular.module('adminPanel').controller('Create$YourModules$Controller', [...ser
         $scope.cancel = function () {
             $scope.closeThisDialog(0);
         };
+
         // 获取运营中心
         $scope.showInstitution = function () {
             Dialog.showInstitutionList({})
@@ -68,6 +61,7 @@ angular.module('adminPanel').controller('Create$YourModules$Controller', [...ser
         $scope.addParams = {};
         $scope.isEdit = params.isEdit;
         if ($scope.isEdit) {
+            $scope.addParams = params.item;
         }
         // ---------------------------------- 手动执行 ------------------------------
     }]);

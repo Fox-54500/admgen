@@ -5,7 +5,7 @@
         text-overflow: ellipsis;
         overflow: hidden;
     }
-
+    
     .search-condition {
         height: 69px;
     }
@@ -35,6 +35,18 @@
         <div class="common-style">
             <button type="button" class="btn defaultBtn" ng-click="edit()">编辑 <i
                     class="glyphicon glyphicon-edit"></i></button>
+        </div>
+        <% } %>
+        <% if(rights.$YourKey$_delete){ %>
+        <div class="common-style">
+            <button type="button" class="btn btn-info ng-binding ng-isolate-scope" ng-click=""
+                    mwl-confirm="" title="<b>删除</b>"
+                    placement="bottom"
+                    message="删除<br/>"
+                    confirm-text="确定"
+                    cancel-text="取消"
+                    confirm-button-type="danger"
+                    on-confirm="delete()">导出 <i class="glyphicon glyphicon-trash"></i></button>
         </div>
         <% } %>
     </div>
@@ -90,7 +102,7 @@
     </div>
     <table class="tableClass table-bordered" style="margin-top: 20px">
         <tr>
-            <td width="20"><input type="checkbox" class="form-control" ng-model="isAll" ng-click="toggleAll()"></td>
+            <td width="20"><input type="checkbox" ng-model="isAll" ng-click="toggleAll()"></td>
             <td>id</td>
             <td>name</td>
             <td>value</td>
@@ -100,19 +112,19 @@
         <tbody style="max-height: 40vh">
         <tr ng-repeat="item in listItems" ng-dblclick="create(true, item)">
             <td width="20">
-                <input type="checkbox" class="form-control" ng-model="idGroup[item.id]">
+                <input type="checkbox" ng-model="idGroup[item.id]">
             </td>
-
+            
             <td>{{item.id}}</td>
-
+            
             <td>{{item.name}}</td>
-
+            
             <td>{{item.value}}</td>
-
+            
             <td>{{item.type}}</td>
-
+            
             <td>{{item.result}}</td>
-
+        
         </tr>
         </tbody>
         <tr>

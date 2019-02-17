@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-process.title = 'zhgen';
+process.title = 'admgen';
 
 require('commander')
     .version(require('../package').version)

@@ -2,7 +2,6 @@
 
 const commander = require('commander');
 const generator = require('../src/generator');
-const chalk = require('chalk');
 
 commander
     .command('generate')
