@@ -7,9 +7,9 @@ Github url： https://github.com/Fox-54500/admgen
     
 #####then:
     
-    $ zhgen generate(or g) modules <your module> <your key>
+    $ admgen generate(or g) modules <your module> <your key>
     
-    e.g. $ zhgen g modules RetailOrder retail_order 
+    e.g. $ admgen g modules RetailOrder retail_order 
     
 #####it will generate route file，base controller and view，create dialog controller and view
 
@@ -17,7 +17,7 @@ Github url： https://github.com/Fox-54500/admgen
 
 #2、Other
 #####besides generate a module，you can generate a base controller separately:
-    $ zhgen generate basectrl <your module> <your key>
+    $ admgen generate basectrl <your module> <your key>
     
 | name | function |
 |-------|------|
@@ -38,9 +38,9 @@ Github url： https://github.com/Fox-54500/admgen
     $ npm i -g admgen
     
 #####然后：
-     $ zhgen generate(或者 g) modules <你的模块> <你的模块标识>
+     $ admgen generate(或者 g) modules <你的模块> <你的模块标识>
         
-     例如: $ zhgen g modules RetailOrder retail_order
+     例如: $ admgen g modules RetailOrder retail_order
      
 #####然后它将会帮你生成路由文件,基础的视图文件与控制器文件,新增弹窗的控制器与视图
 
@@ -48,7 +48,7 @@ Github url： https://github.com/Fox-54500/admgen
 
 #2、其他
 #####除了直接生成模块，你还可以单独生成一个模块里面的某个文件:
-    $ zhgen generate basectrl <your module> <your key>
+    $ admgen generate basectrl <your module> <your key>
     
 | 名称 | 功能 |
 |-------|------|
