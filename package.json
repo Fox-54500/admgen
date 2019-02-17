@@ -1,6 +1,6 @@
 {
   "name": "admgen",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "generate view & controller",
   "main": "index.js",
   "bin": {
